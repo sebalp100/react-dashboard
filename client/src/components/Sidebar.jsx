@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Box,
   Divider,
@@ -32,7 +33,67 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import FlexBetween from './FlexBetween';
 import profileImage from '../assets/profile.jpg';
 
+const navItems = [
+  {
+    text: 'Dashboard',
+    icon: <HomeOutlined />,
+  },
+  {
+    text: 'Client Facing',
+    icon: null,
+  },
+  {
+    text: 'Products',
+    icon: <ShoppingCartOutlined />,
+  },
+  {
+    text: 'Customers',
+    icon: <Groups2Outlined />,
+  },
+  {
+    text: 'Transactions',
+    icon: <ReceiptLongOutlined />,
+  },
+  {
+    text: 'Geography',
+    icon: <PublicOutlined />,
+  },
+  {
+    text: 'Sales',
+    icon: null,
+  },
+  {
+    text: 'Overview',
+    icon: <PointOfSaleOutlined />,
+  },
+  {
+    text: 'Daily',
+    icon: <TodayOutlined />,
+  },
+  {
+    text: 'Monthly',
+    icon: <CalendarMonthOutlined />,
+  },
+  {
+    text: 'Breakdown',
+    icon: <PieChartOutlined />,
+  },
+  {
+    text: 'Management',
+    icon: null,
+  },
+  {
+    text: 'Admin',
+    icon: <AdminPanelSettingsOutlined />,
+  },
+  {
+    text: 'Performance',
+    icon: <TrendingUpOutlined />,
+  },
+];
+
 const Sidebar = ({
+  user,
   drawerWidth,
   isSidebarOpen,
   setIsSidebarOpen,
@@ -42,65 +103,6 @@ const Sidebar = ({
   const [active, setActive] = useState('');
   const navigate = useNavigate();
   const theme = useTheme();
-
-  const navItems = [
-    {
-      text: 'Dashboard',
-      icon: <HomeOutlined />,
-    },
-    {
-      text: 'Client Facing',
-      icon: null,
-    },
-    {
-      text: 'Products',
-      icon: <ShoppingCartOutlined />,
-    },
-    {
-      text: 'Customers',
-      icon: <Groups2Outlined />,
-    },
-    {
-      text: 'Transactions',
-      icon: <ReceiptLongOutlined />,
-    },
-    {
-      text: 'Geography',
-      icon: <PublicOutlined />,
-    },
-    {
-      text: 'Sales',
-      icon: null,
-    },
-    {
-      text: 'Overview',
-      icon: <PointOfSaleOutlined />,
-    },
-    {
-      text: 'Daily',
-      icon: <TodayOutlined />,
-    },
-    {
-      text: 'Monthly',
-      icon: <CalendarMonthOutlined />,
-    },
-    {
-      text: 'Breakdown',
-      icon: <PieChartOutlined />,
-    },
-    {
-      text: 'Management',
-      icon: null,
-    },
-    {
-      text: 'Admin',
-      icon: <AdminPanelSettingsOutlined />,
-    },
-    {
-      text: 'Performance',
-      icon: <TrendingUpOutlined />,
-    },
-  ];
 
   useEffect(() => {
     setActive(pathname.substring(1));
@@ -126,7 +128,7 @@ const Sidebar = ({
           }}
         >
           <Box width="100%">
-            <Box m="1.5rem 2rem 2rem 3rem">
+            <Box m="1.5rem 2rem 1rem 3rem">
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
                   <Typography variant="h4" fontWeight="bold">
@@ -144,7 +146,7 @@ const Sidebar = ({
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
-                    <Typography key={text} sx={{ m: '2.25rem 0 1rem 3rem' }}>
+                    <Typography key={text} sx={{ m: '1rem 0 1rem 2rem' }}>
                       {text}
                     </Typography>
                   );
