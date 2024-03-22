@@ -9,7 +9,7 @@ import {
 import FlexBetween from './FlexBetween';
 import { useDispatch } from 'react-redux';
 import { setMode } from '../state';
-import profileImage from '../assets/react.svg';
+import profileImage from '../assets/profile.jpg';
 import {
   AppBar,
   IconButton,
@@ -18,7 +18,7 @@ import {
   useTheme,
 } from '@mui/material';
 
-const Navbar = () => {
+const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -36,7 +36,7 @@ const Navbar = () => {
         }}
       >
         <FlexBetween>
-          <IconButton onClick={() => console.log('open/close')}>
+          <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <MenuIcon />
           </IconButton>
           <FlexBetween
