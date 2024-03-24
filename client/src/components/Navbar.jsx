@@ -43,7 +43,10 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
     >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         <FlexBetween>
-          <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+          <IconButton
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="menu-button"
+          >
             <MenuIcon />
           </IconButton>
           <FlexBetween
@@ -51,6 +54,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             borderRadius="9px"
             gap="3rem"
             p="0.1rem 1.5rem"
+            className="searchbar"
           >
             <InputBase placeholder="Search..." />
             <IconButton>

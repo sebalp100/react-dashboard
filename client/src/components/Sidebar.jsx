@@ -1,6 +1,5 @@
 import {
   Box,
-  Divider,
   Drawer,
   IconButton,
   List,
@@ -12,7 +11,6 @@ import {
   useTheme,
 } from '@mui/material';
 import {
-  SettingsOutlined,
   ChevronLeft,
   ChevronRightOutlined,
   HomeOutlined,
@@ -30,7 +28,6 @@ import {
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import FlexBetween from './FlexBetween';
-import profileImage from '../assets/profile.jpg';
 
 const navItems = [
   {
@@ -92,7 +89,6 @@ const navItems = [
 ];
 
 const Sidebar = ({
-  user,
   drawerWidth,
   isSidebarOpen,
   setIsSidebarOpen,
@@ -115,6 +111,7 @@ const Sidebar = ({
           onClose={() => setIsSidebarOpen(false)}
           variant="persistent"
           anchor="left"
+          className="sidebar"
           sx={{
             width: drawerWidth,
             '& .MuiDrawer-paper': {
@@ -145,7 +142,7 @@ const Sidebar = ({
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
-                    <Typography key={text} sx={{ m: '0.3rem 0 0 2rem' }}>
+                    <Typography key={text} sx={{ m: '0.9rem 0 0.9rem 2rem' }}>
                       {text}
                     </Typography>
                   );
@@ -190,42 +187,6 @@ const Sidebar = ({
                 );
               })}
             </List>
-          </Box>
-
-          <Box position="absolute" bottom="1.5rem">
-            <Divider />
-            <FlexBetween textTransform="none" gap="1rem" m="1rem 2rem 0 3rem">
-              <Box
-                component="img"
-                alt="profile"
-                src={profileImage}
-                height="40px"
-                width="40px"
-                borderRadius="50%"
-                sx={{ objectFit: 'cover' }}
-              />
-              <Box textAlign="left">
-                <Typography
-                  fontWeight="bold"
-                  fontSize="0.9rem"
-                  sx={{ color: theme.palette.secondary[100] }}
-                >
-                  {user.name}
-                </Typography>
-                <Typography
-                  fontSize="0.8rem"
-                  sx={{ color: theme.palette.secondary[200] }}
-                >
-                  {user.occupation}
-                </Typography>
-              </Box>
-              <SettingsOutlined
-                sx={{
-                  color: theme.palette.secondary[300],
-                  fontSize: '25px ',
-                }}
-              />
-            </FlexBetween>
           </Box>
         </Drawer>
       )}
